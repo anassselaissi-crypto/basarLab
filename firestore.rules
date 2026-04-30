@@ -1,0 +1,32 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    
+    // Global Deny
+    match /{document=**} {
+      allow read, write: if false;
+    }
+
+    // Helper Functions
+    function isSignedIn() {
+      return request.auth != null;
+    }
+
+    function isValidId(id) {
+      return id is string && id.size() <= 128 && id.matches('^[a-zA-Z0-9_\\-]+$');
+    }
+
+    // Memories Collection Security
+    match /memories/{memoryId} {
+      // Allow list and read (since the app currently supports anonymous/public access for demo)
+      // In a production app, we would restrict this to owners.
+      allow read, list: if true;
+      
+      // Allow creation and dismantling of memory sessions
+      allow create, delete: if true;
+      
+      // No updates allowed for data integrity
+      allow update: if false;
+    }
+  }
+}

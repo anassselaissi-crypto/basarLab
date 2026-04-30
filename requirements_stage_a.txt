@@ -1,0 +1,32 @@
+# ABSTRA KERNEL - STAGE A.2 ANALYSIS STACK
+# This file defines the core dependencies required for Agent 3's future 
+# formal processing logic (Numerical, Vision, and Tensors).
+
+# Numerical / Scientific
+numpy>=1.26.0
+scipy>=1.11.0
+sympy>=1.12
+pandas>=2.1.0
+
+# Image / Vision Processing
+opencv-python>=4.8.1
+Pillow>=10.0.0
+scikit-image>=0.22.0
+imageio>=2.31.0
+
+# Deep Learning / Tensor Support (CPU defaults for Stage A.2)
+torch>=2.1.0
+torchvision>=0.16.0
+torchaudio>=2.1.0
+
+# NLP / Symbolic Analysis
+spacy>=3.7.0
+nltk>=3.8.1
+rapidfuzz>=3.5.0
+
+# Utility / Diagnostics / Environment
+matplotlib>=3.8.0
+plotly>=5.18.0
+python-dotenv>=1.0.0
+pyyaml>=6.0
+tqdm>=4.66.0

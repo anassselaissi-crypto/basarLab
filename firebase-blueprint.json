@@ -1,0 +1,24 @@
+{
+  "entities": {
+    "Memory": {
+      "title": "Kernel Memory Session",
+      "description": "A persistent archive of a DNA Kernel analysis session.",
+      "type": "object",
+      "properties": {
+        "input": { "type": "string" },
+        "agent1Analysis": { "type": "object" },
+        "agent2Output": { "type": "object" },
+        "agent3Output": { "type": "object" },
+        "ssfParams": { "type": "object" },
+        "timestamp": { "type": "string", "format": "date-time" }
+      },
+      "required": ["input", "agent1Analysis", "ssfParams"]
+    }
+  },
+  "firestore": {
+    "memories/{memoryId}": {
+      "schema": "Memory",
+      "description": "Collection of all analytical memory archives."
+    }
+  }
+}
