@@ -1,0 +1,12 @@
+# Base image must match your host ROCm driver stack.
+# Replace with the ROCm image version used on your GPU server.
+FROM rocm/dev-ubuntu-22.04:latest
+
+WORKDIR /app
+COPY gpu/requirements-rocm.txt /app/requirements-rocm.txt
+RUN apt-get update && apt-get install -y python3-pip && rm -rf /var/lib/apt/lists/*
+RUN pip3 install --no-cache-dir -r /app/requirements-rocm.txt
+
+COPY gpu/agent3_rocm_worker.py /app/agent3_rocm_worker.py
+EXPOSE 8790
+CMD ["python3", "/app/agent3_rocm_worker.py"]
